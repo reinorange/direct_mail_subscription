@@ -85,6 +85,7 @@ class user_dmailsubscribe
             }
         }
         $this->pi_loadLL();
+        $GLOBALS['TYPO3_DB']->setConnectionCharset($GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['charset']);
     }
 
     /**
@@ -122,11 +123,12 @@ class user_dmailsubscribe
             $subscribedToList = implode(',', $subscribedTo);
         }
 
+        $pageRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Page\PageRepository::class);
         $res = $this->getDatabaseConnection()->exec_SELECTquery(
             '*',
             'sys_dmail_category',
             'l18n_parent=0 AND pid='.intval($pid).
-            $this->cObj->enableFields('sys_dmail_category')
+            $pageRepository->enableFields('sys_dmail_category')
         );
 
         $i = 1;

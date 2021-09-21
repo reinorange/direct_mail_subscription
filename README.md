@@ -1,6 +1,6 @@
 # Direct Mail Subscription
 
-Fork of direct_mail_subscription for TYPO3 9.5 LTS support.
+Fork of direct_mail_subscription for TYPO3 10 support.
 You need to install typo3db_legacy Extension. Also you need to refresh the content elements of direct_mail_subscription.
 
 --
@@ -16,7 +16,7 @@ This extension depends on following extension:
 Any question, you can find some help in the TYPO3 Slack
 
 https://typo3.slack.com/messages/direct_mail
-   
+
 To join the slack channel, please request for invitation from https://forger.typo3.org/slack
 
 ## Contributing

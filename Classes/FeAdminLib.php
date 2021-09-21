@@ -52,7 +52,7 @@ use TYPO3\CMS\Core\Service\MarkerBasedTemplateService;
  *
  * @author Kasper Skårhøj <kasperYYYY@typo3.com>
  */
-class user_feAdmin
+class FeAdminLib
 {
     // External, static:
     /*
@@ -146,9 +146,10 @@ class user_feAdmin
      *
      * @return string HTML content
      */
-    public function init($content, $conf)
+    public function init(string $content, array $conf)
     {
         $this->conf = $conf;
+        $GLOBALS['TYPO3_DB']->setConnectionCharset($GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['charset']);
 
         $templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
 
