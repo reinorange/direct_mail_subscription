@@ -2226,6 +2226,6 @@ class FeAdminLib
     }
 }
 
-if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['media/scripts/fe_adminLib.inc'])) {
-    include_once $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['media/scripts/fe_adminLib.inc'];
+if (defined('TYPO3') && isset($GLOBALS['TYPO3_CONF_VARS']['FE']['XCLASS']['media/scripts/fe_adminLib.inc'])) {
+    include_once $GLOBALS['TYPO3_CONF_VARS']['FE']['XCLASS']['media/scripts/fe_adminLib.inc'];
 }
