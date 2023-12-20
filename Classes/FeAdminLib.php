@@ -32,7 +32,9 @@ use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Service\MarkerBasedTemplateService;
+use DirectMailTeam\DirectMail\Utility\AuthCodeUtility;
 
 /**
  * FE admin lib.
@@ -1098,7 +1100,7 @@ class FeAdminLib
 	/*]]>*/
 </script>
 ';
-        $this->getTypoScriptFrontendController()->additionalHeaderData['JSincludeFormupdate'] = '<script type="text/javascript" src="'.GeneralUtility::createVersionNumberedFilename($this->getTypoScriptFrontendController()->absRefPrefix. ExtensionManagementUtility::extPath('direct_mail_subscription').'jsfunc.updateform.js').'"></script>';
+        $this->getTypoScriptFrontendController()->additionalHeaderData['JSincludeFormupdate'] = '<script type="text/javascript" src="'.GeneralUtility::createVersionNumberedFilename(PathUtility::getAbsoluteWebPath(ExtensionManagementUtility::extPath('direct_mail_subscription').'jsfunc.updateform.js')).'"></script>';
 
         return $JSPart;
     }
@@ -1790,7 +1792,7 @@ class FeAdminLib
             }
             $value .= $GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'];
 
-            return substr(md5($value), 0, $l);
+            return AuthCodeUtility::getHmac($r, $this->conf['authcodeFields']);
         }
     }
 
